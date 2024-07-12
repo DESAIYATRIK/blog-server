@@ -11,8 +11,7 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 8000;
-const username = process.env.DB_USERNAME;
-const password = process.env.DB_PASSWORD;
+const url = process.env.DB_URL;
 
 // Middleware
 app.use(cors({
@@ -36,7 +35,7 @@ app.use((req, res, next) => {
 app.use('/', Router);
 
 // Database connection
-Connection(username, password);
+Connection(url);
 
 // Start server
 app.listen(PORT, () => console.log(`Server is running successfully on PORT ${PORT}`));
