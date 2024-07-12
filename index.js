@@ -24,6 +24,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Routes
 app.use('/', Router);
+// Preflight request handling
+app.options('*', (req, res) => {
+    res.header("Access-Control-Allow-Origin", "https://blog-client-lovat.vercel.app");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+    res.sendStatus(204); // No Content
+});
 
 // Database connection
 Connection(url);
