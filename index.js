@@ -15,7 +15,11 @@ const username = process.env.DB_USERNAME;
 const password = process.env.DB_PASSWORD;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin:["https://blog-client-lovat.vercel.app/account"],
+    methods:["GET","POST","PUT","DELETE"],
+    credentials:true
+}));
 app.options('*', cors()); // Preflight all routes
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
