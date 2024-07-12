@@ -15,21 +15,12 @@ const url = process.env.DB_URL;
 
 // Middleware
 app.use(cors({
-    origin:'https://blog-client-lovat.vercel.app',
-    methods:["GET","POST","PUT","DELETE"],
-    credentials:true
+    origin: 'https://blog-client-lovat.vercel.app',
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
 }));
-app.options('*', cors()); // Preflight all routes
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-// Custom CORS headers
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-    next();
-});
 
 // Routes
 app.use('/', Router);
