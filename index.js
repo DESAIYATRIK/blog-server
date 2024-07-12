@@ -15,7 +15,7 @@ const url = process.env.DB_URL;
 
 // Middleware
 app.use(cors({
-    origin:["https://blog-client-lovat.vercel.app/account"],
+    origin:'https://blog-client-lovat.vercel.app/account',
     methods:["GET","POST","PUT","DELETE"],
     credentials:true
 }));
